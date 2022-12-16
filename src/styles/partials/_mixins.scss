@@ -1,0 +1,13 @@
+// centrare elementi
+@mixin center() {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+// distanziare gli elementi con between
+@mixin between() {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
