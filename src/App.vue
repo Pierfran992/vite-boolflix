@@ -23,7 +23,7 @@ export default {
             let myUrl = store.apiPopularURL;
             // creata la condizione per far ricercare un film all'utente in base al nome che inserisce
             if (store.searchTitle !== "") {
-                myUrl = `${store.apiSearchURL}${apiParameter}=${searchTitle}`;
+                myUrl = `${store.apiSearchURL}${store.apiParameter}=${store.searchTitle}`;
             }
 
             axios
@@ -50,7 +50,7 @@ export default {
     </header>
     <!-- componenti del main -->
     <main>
-        <SearchBar />
+        <SearchBar @search="getFilm" />
         <FilmList />
     </main>
 
