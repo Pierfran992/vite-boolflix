@@ -12,9 +12,22 @@
     align-items: center;
 }
 
+@mixin start() {
+    display: flex;
+    justify-content: start;
+    align-items: center;
+    gap: 10px;
+}
+
 // posiziono gli elementi in colonna con flex
 @mixin column() {
     display: flex;
     flex-direction: column;
     gap: 3px;
+}
+
+// impostazioni predefinite icone
+@mixin iconSize() {
+    width: 60px;
+    height: 60px;
 }
