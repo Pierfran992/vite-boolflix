@@ -9,6 +9,12 @@ export default {
             store,
         }
     },
+    methods: {
+        resetSearch() {
+            store.searchTitle = "";
+            this.$emit('search');
+        }
+    }
 }
 </script>
 
@@ -16,6 +22,7 @@ export default {
     <div class="container">
         <input id="searchFilm" type="text" placeholder="Search film..." v-model="store.searchTitle">
         <button type="submit" @click.prevent="$emit('search')">cercaaaaaa</button>
+        <button type="submit" @click.prevent="resetSearch">cancellaaaaaa</button>
     </div>
 </template>
 
