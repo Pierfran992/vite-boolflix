@@ -1,5 +1,6 @@
 <script>
 import axios from 'axios';
+import BarHeader from './components/BarHeader.vue';
 import SearchBar from './components/SearchBar.vue';
 import FilmList from './components/FilmList.vue';
 
@@ -8,6 +9,7 @@ import { store } from './store.js';
 export default {
     name: "App",
     components: {
+        BarHeader,
         SearchBar,
         FilmList,
     },
@@ -44,18 +46,49 @@ export default {
 </script>
 
 <template>
-    <!-- componenti dell'header -->
-    <header>
+    <section class="top_screen">
 
-    </header>
-    <!-- componenti del main -->
-    <main>
-        <SearchBar @search="getFilm" />
-        <FilmList />
-    </main>
+    </section>
+
+    <section class="middle_screen">
+        <!-- creo il conteiner dell'app -->
+        <div class="app_container">
+            <BarHeader />
+            <section>
+                <SearchBar @search="getFilm" />
+                <FilmList />
+            </section>
+        </div>
+    </section>
 
 </template>
 
 <style lang="scss">
 @use './styles/general.scss' as *;
+@use './styles/partials/variables' as *;
+
+.top_screen {
+    background-color: $fourColor;
+    height: 100px;
+}
+
+.middle_screen {
+    background-color: $thirdColor;
+    height: calc(100% - 100px);
+    min-height: calc(100vh - 100px);
+}
+
+.app_container {
+    background-color: aliceblue;
+    width: 80%;
+    max-width: 1170px;
+    height: 800px;
+    margin: 0 auto;
+    position: relative;
+    top: -50px;
+
+    section {
+        overflow-y: auto;
+    }
+}
 </style>
