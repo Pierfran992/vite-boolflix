@@ -32,7 +32,7 @@ export default {
 @use '../../styles/partials/mixins.scss' as *;
 
 .gen_card {
-    width: calc((100% - 80px)/ 5);
+    width: calc((100% - 40px)/ 5);
     height: fit-content;
     position: relative;
 
