@@ -23,7 +23,7 @@ export default {
         getFilm() {
             // innanzitutto associo a myUrl l'url di film popolari 
             let myUrl = store.apiPopularURL;
-            // creata la condizione per far ricercare un film all'utente in base al nome che inserisce
+            // creata la condizione per far ricercare un film o una serieTV all'utente in base al nome che inserisce
             if (store.searchTitle !== "") {
                 myUrl = `${store.apiSearchURL}${store.apiParameter}=${store.searchTitle}`;
             }
@@ -54,10 +54,8 @@ export default {
         <!-- creo il conteiner dell'app -->
         <div class="app_container">
             <BarHeader />
-            <section>
-                <SearchBar @search="getFilm" />
-                <FilmList />
-            </section>
+            <SearchBar @search="getFilm" />
+            <FilmList />
         </div>
     </section>
 
@@ -86,9 +84,5 @@ export default {
     margin: 0 auto;
     position: relative;
     top: -50px;
-
-    section {
-        overflow-y: auto;
-    }
 }
 </style>

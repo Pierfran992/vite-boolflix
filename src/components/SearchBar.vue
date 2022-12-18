@@ -20,14 +20,47 @@ export default {
 
 <template>
     <div class="container">
-        <input id="searchFilm" type="text" placeholder="Search film..." v-model="store.searchTitle">
-        <button type="submit" @click.prevent="$emit('search')">cercaaaaaa</button>
-        <button type="submit" @click.prevent="resetSearch">cancellaaaaaa</button>
+        <input id="searchFilm" type="text" placeholder="Search film o TV Series..." v-model="store.searchTitle">
+        <button type="submit" @click.prevent="$emit('search')">
+            <font-awesome-icon icon="fa-solid fa-magnifying-glass" />
+        </button>
+        <button type="submit" @click.prevent="resetSearch">
+            <font-awesome-icon icon="fa-solid fa-delete-left" />
+        </button>
     </div>
 </template>
 
 <style lang="scss" scoped>
-#searchFilm {
-    margin: 50px 0;
+@use '../styles/partials/variables.scss' as *;
+@use '../styles/partials/mixins.scss' as *;
+
+.container {
+    background-color: $fourColor;
+    height: 60px;
+    @include center();
+    gap: 10px;
+
+    #searchFilm {
+        color: #fff;
+        background-color: rgba($color: #000000, $alpha: 0.9);
+        width: 60%;
+        height: 30px;
+        padding-left: 10px;
+        line-height: 30px;
+        border: none;
+        border-radius: 10px;
+    }
+
+    button {
+        color: $firstColor;
+        background-color: rgba($color: #000000, $alpha: 0.9);
+        width: 40px;
+        height: 40px;
+        line-height: 40px;
+        border: none;
+        border-radius: 50%;
+        font-size: 20px;
+        cursor: pointer;
+    }
 }
 </style>

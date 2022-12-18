@@ -14,9 +14,7 @@ export default {
         </div>
         <h4>{{ info.title }} {{ info.name }}</h4>
         <span>Titolo Originale: {{ info.original_title }} {{ info.original_name }}</span>
-
         <span>Lingua Origanale: {{ info.original_language }}</span>
-
         <span>Voto: {{ info.vote_average }}</span>
     </div>
 </template>
