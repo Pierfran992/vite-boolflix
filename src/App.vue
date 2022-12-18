@@ -21,11 +21,17 @@ export default {
     methods: {
         // creo il metodo per far stampare dei risultati di film in pagina
         getFilm() {
+            // richiamo gli h2 inseriti nel componente FilmList
+            let topTitle = document.querySelector(".top_title");
+            let results = document.querySelector(".results");
             // innanzitutto associo a myUrl l'url di film popolari 
             let myUrl = store.apiPopularURL;
             // creata la condizione per far ricercare un film o una serieTV all'utente in base al nome che inserisce
             if (store.searchTitle !== "") {
                 myUrl = `${store.apiSearchURL}${store.apiParameter}=${store.searchTitle}`;
+                // faccio scomparire un h2 per far apparire l'altro
+                topTitle.classList.add("not_active");
+                results.classList.add("active");
             }
 
             axios

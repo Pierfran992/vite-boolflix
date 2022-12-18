@@ -11,8 +11,15 @@ export default {
     },
     methods: {
         resetSearch() {
+            // richiamo gli h2 inseriti nel componente FilmList
+            let topTitle = document.querySelector(".top_title");
+            let results = document.querySelector(".results");
+            // ripristino il valore di searchTitle al suo valore iniziale
             store.searchTitle = "";
             this.$emit('search');
+            // faccio scomparire un h2 per far apparire l'altro
+            topTitle.classList.remove("not_active");
+            results.classList.remove("active");
         }
     }
 }
