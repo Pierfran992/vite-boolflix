@@ -29,8 +29,13 @@ export default {
 @use '../styles/partials/mixins.scss' as *;
 
 .container {
+    background-color: $fourColor;
+    height: calc(100% - 140px);
+    padding: 50px 10px;
     @include between();
     flex-wrap: wrap;
     align-items: stretch;
+    gap: 30px 10px;
+    overflow-y: auto;
 }
 </style>
