@@ -20,7 +20,8 @@ export default {
 
 <template>
     <div class="container">
-        <input id="searchFilm" type="text" placeholder="Search film o TV Series..." v-model="store.searchTitle">
+        <input id="searchFilm" type="text" placeholder="Search Film o TV Series..." v-model="store.searchTitle"
+            @keyup.enter="$emit('search')">
         <button type="submit" @click.prevent="$emit('search')">
             <font-awesome-icon icon="fa-solid fa-magnifying-glass" />
         </button>
