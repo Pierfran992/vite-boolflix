@@ -30,13 +30,17 @@ export default {
         // creata la funzione per far stampare delle bandiere al posto delle lingue 
         selectFlagLanguage() {
             const selectFlag = this.flagLanguage.find((language) => language.language === this.info.original_language);
-            console.log(selectFlag);
             if (selectFlag) {
                 return selectFlag.urlImg;
             }
             return this.flagLanguage[this.flagLanguage.length - 1].urlImg;
 
         },
+        // creo la funzione per convertire il numero decimale da 1 a 10 del voto in un numero intero da 1 a 5
+        convertVote() {
+            let roundVote = Math.round(this.info.vote_average / 2);
+            return roundVote;
+        }
     }
 }
 </script>
@@ -52,15 +56,19 @@ export default {
         <!-- slot che contiene le informazioni sui film o sulle serie tv -->
         <div class="slot_info">
             <h4>{{ info.title }} {{ info.name }}</h4>
-            <span><strong>Titolo Originale:</strong> {{ info.original_title }} {{ info.original_name }}</span>
-            <br>
-            <span><strong>Lingua Origanale:</strong></span>
-            <img class="slot-flag" :src="selectFlagLanguage" alt="">
-            <br>
-            <span><strong>Voto:</strong>
-                {{ info.vote_average }}
-            </span>
-            <br>
+            <div><strong>Titolo Originale:</strong> {{ info.original_title }} {{ info.original_name }}</div>
+            <div class="slot_language">
+                <strong>Lingua Origanale:</strong>
+                <img class="slot_flag" :src="selectFlagLanguage" :alt="info.original_language">
+            </div>
+            <div class="slot_vote">
+                <strong>Voto:</strong>
+                <div>
+                    <!-- stampo attraverso due cicli for (come riferimento per il ciclo ho usato il valore del voto generato con la funzione convertVote) le stelle piene e le stelle vuote -->
+                    <font-awesome-icon icon="fa-solid fa-star" v-for="star in convertVote" class="star_vote" />
+                    <font-awesome-icon icon="fa-regular fa-star" v-for="star in (5 - convertVote)" class="star_vote" />
+                </div>
+            </div>
             <p><strong>Trama:</strong> {{ info.overview }}</p>
         </div>
     </div>
@@ -105,15 +113,32 @@ export default {
             color: $fourColor;
         }
 
-        span,
+        div,
         p {
             font-size: 0.8rem;
         }
 
-        .slot-flag {
+        .slot_language,
+        .slot_vote {
+            display: flex;
+            justify-content: start;
+            gap: 10px;
+        }
+
+        .slot_vote {
+            strong {
+                margin-right: 10x;
+            }
+
+            .star_vote {
+                color: $fourColor;
+                font-size: 1rem;
+            }
+        }
+
+        .slot_flag {
             width: 30px;
             height: 20px;
-            margin: 0 0 0 10px;
             border-radius: 5px;
         }
     }
