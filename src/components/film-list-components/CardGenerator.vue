@@ -3,6 +3,40 @@ export default {
     name: "CardGenerator",
 
     props: ["info", "urlImg",],
+
+    data() {
+        return {
+            flagLanguage: [
+                {
+                    urlImg: "../../src/assets/img/gb.png",
+                    language: "en",
+                },
+                {
+                    urlImg: "../../src/assets/img/it.png",
+                    language: "it",
+                },
+                {
+                    urlImg: "../../src/assets/img/no.png",
+                    language: "no",
+                },
+                {
+                    urlImg: "../../src/assets/img/world.jpg",
+                    language: "all",
+                },
+            ],
+        }
+    },
+    methods: {
+        selectFlagLanguage: (elem1, elem2) => {
+            for (let i = 0; i < elem1.lenght; i++) {
+                if (this.elem1[i].language.includes(elem2)) {
+                    return this.elem1[i].urlImg;
+                } else {
+                    return this.elem1[this.elem1.lenght - 1].urlImg;
+                }
+            }
+        },
+    }
 }
 </script>
 
@@ -19,9 +53,12 @@ export default {
             <h4>{{ info.title }} {{ info.name }}</h4>
             <span><strong>Titolo Originale:</strong> {{ info.original_title }} {{ info.original_name }}</span>
             <br>
-            <span><strong>Lingua Origanale:</strong> {{ info.original_language }}</span>
+            <span><strong>Lingua Origanale:</strong></span>
+            <img class="slot-flag" :src="selectFlagLanguage(flagLanguage, info.original_language)" alt="">
             <br>
-            <span><strong>Voto:</strong> {{ info.vote_average }}</span>
+            <span><strong>Voto:</strong>
+                {{ info.vote_average }}
+            </span>
             <br>
             <p><strong>Trama:</strong> {{ info.overview }}</p>
         </div>
@@ -70,6 +107,12 @@ export default {
         span,
         p {
             font-size: 0.8rem;
+        }
+
+        .slot-flag {
+            width: 30px;
+            height: 20px;
+            margin: 0;
         }
     }
 }
