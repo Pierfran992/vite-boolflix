@@ -8,19 +8,19 @@ export default {
         return {
             flagLanguage: [
                 {
-                    urlImg: "../../src/assets/img/gb.png",
+                    urlImg: "../../assets/img/gb.png",
                     language: "en",
                 },
                 {
-                    urlImg: "../../src/assets/img/it.png",
+                    urlImg: "../../assets/img/it.png",
                     language: "it",
                 },
                 {
-                    urlImg: "../../src/assets/img/no.png",
+                    urlImg: "../../assets/img/no.png",
                     language: "no",
                 },
                 {
-                    urlImg: "../../src/assets/img/world.jpg",
+                    urlImg: "../../assets/img/world.jpg",
                     language: "all",
                 },
             ],
