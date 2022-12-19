@@ -2,7 +2,7 @@
 export default {
     name: "CardGenerator",
 
-    props: ["info", "urlImg"],
+    props: ["info", "urlImg",],
 }
 </script>
 
@@ -11,7 +11,8 @@ export default {
     <div class="gen_card">
         <!-- slot locandina film o serie tv -->
         <div class="slot_img_card">
-            <img :src="urlImg + info.poster_path" :alt="info.title || info.name">
+            <img :src="urlImg + info.poster_path" :alt="info.title || info.name"
+                onerror="this.src = '../../src/assets/img/image-not-found.jpg'">
         </div>
         <!-- slot che contiene le informazioni sui film o sulle serie tv -->
         <div class="slot_info">
