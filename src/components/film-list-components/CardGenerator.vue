@@ -8,28 +8,34 @@ export default {
         return {
             flagLanguage: [
                 {
-                    urlImg: "../../assets/img/gb.png",
+                    urlImg: "../../src/assets/img/gb.png",
                     language: "en",
                 },
                 {
-                    urlImg: "../../assets/img/it.png",
+                    urlImg: "../../src/assets/img/it.png",
                     language: "it",
                 },
                 {
-                    urlImg: "../../assets/img/no.png",
+                    urlImg: "../../src/assets/img/no.png",
                     language: "no",
                 },
                 {
-                    urlImg: "../../assets/img/world.jpg",
+                    urlImg: "../../src/assets/img/world.jpg",
                     language: "all",
                 },
             ],
         }
     },
     computed: {
-        selectFlagLanguage: () => {
-            const selectFlag = this.flagLanguage.find((elem) => elem.language === info.original_language);
+        // creata la funzione per far stampare delle bandiere al posto delle lingue 
+        selectFlagLanguage() {
+            const selectFlag = this.flagLanguage.find((language) => language.language === this.info.original_language);
             console.log(selectFlag);
+            if (selectFlag) {
+                return selectFlag.urlImg;
+            }
+            return this.flagLanguage[this.flagLanguage.length - 1].urlImg;
+
         },
     }
 }
@@ -49,7 +55,7 @@ export default {
             <span><strong>Titolo Originale:</strong> {{ info.original_title }} {{ info.original_name }}</span>
             <br>
             <span><strong>Lingua Origanale:</strong></span>
-            <img class="slot-flag" :src="selectFlagLanguage()" alt="">
+            <img class="slot-flag" :src="selectFlagLanguage" alt="">
             <br>
             <span><strong>Voto:</strong>
                 {{ info.vote_average }}
@@ -107,7 +113,8 @@ export default {
         .slot-flag {
             width: 30px;
             height: 20px;
-            margin: 0;
+            margin: 0 0 0 10px;
+            border-radius: 5px;
         }
     }
 }
