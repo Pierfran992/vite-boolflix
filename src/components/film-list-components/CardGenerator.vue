@@ -26,15 +26,10 @@ export default {
             ],
         }
     },
-    methods: {
-        selectFlagLanguage: (elem1, elem2) => {
-            for (let i = 0; i < elem1.lenght; i++) {
-                if (this.elem1[i].language.includes(elem2)) {
-                    return this.elem1[i].urlImg;
-                } else {
-                    return this.elem1[this.elem1.lenght - 1].urlImg;
-                }
-            }
+    computed: {
+        selectFlagLanguage: () => {
+            const selectFlag = this.flagLanguage.find((elem) => elem.language === info.original_language);
+            console.log(selectFlag);
         },
     }
 }
@@ -54,7 +49,7 @@ export default {
             <span><strong>Titolo Originale:</strong> {{ info.original_title }} {{ info.original_name }}</span>
             <br>
             <span><strong>Lingua Origanale:</strong></span>
-            <img class="slot-flag" :src="selectFlagLanguage(flagLanguage, info.original_language)" alt="">
+            <img class="slot-flag" :src="selectFlagLanguage()" alt="">
             <br>
             <span><strong>Voto:</strong>
                 {{ info.vote_average }}
