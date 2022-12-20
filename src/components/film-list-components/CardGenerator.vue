@@ -14,11 +14,13 @@ export default {
         selectFlagLanguage() {
             const selectFlag = this.flag.find((language) => language.language === this.info.original_language);
             if (selectFlag) {
-                return selectFlag.urlImg;
+                // let img = { ...selectFlag }
+                return new URL(`../../assets/img/${selectFlag.urlImg}`, import.meta.url).href;
+            } else {
+                return new URL(`../../assets/img/${this.flag[this.flag.length - 1].urlImg}`, import.meta.url).href;
             }
-            return this.flag[this.flag.length - 1].urlImg;
-
         },
+
         // creo la funzione per convertire il numero decimale da 1 a 10 del voto in un numero intero da 1 a 5
         convertVote() {
             let roundVote = Math.round(this.info.vote_average / 2);
@@ -34,7 +36,7 @@ export default {
         <!-- slot locandina film o serie tv -->
         <div class="slot_img_card">
             <img :src="urlImg + info.poster_path" :alt="info.title || info.name"
-                onerror="this.src = '../../src/assets/img/image-not-found.jpg'">
+                onerror="this.src = '../src/assets/img/image-not-found.jpg'">
         </div>
         <!-- slot che contiene le informazioni sui film o sulle serie tv -->
         <div class="slot_info">
