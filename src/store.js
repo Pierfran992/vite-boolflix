@@ -3,19 +3,19 @@ import { reactive } from 'vue';
 export const store = reactive({
     flagLanguage: [
         {
-            urlImg: "./assets/img/gb.png",
+            urlImg: "../src/assets/img/gb.png",
             language: "en",
         },
         {
-            urlImg: "./assets/img/it.png",
+            urlImg: "../src/assets/img/it.png",
             language: "it",
         },
         {
-            urlImg: "./assets/img/no.png",
+            urlImg: "../src/assets/img/no.png",
             language: "no",
         },
         {
-            urlImg: "./assets/img/world.jpg",
+            urlImg: "../src/assets/img/world.jpg",
             language: "all",
         },
     ],
