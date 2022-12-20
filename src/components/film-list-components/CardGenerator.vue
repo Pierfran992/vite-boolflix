@@ -2,38 +2,21 @@
 export default {
     name: "CardGenerator",
 
-    props: ["info", "urlImg",],
+    props: ["info", "urlImg", "flag"],
 
     data() {
         return {
-            flagLanguage: [
-                {
-                    urlImg: "../../src/assets/img/gb.png",
-                    language: "en",
-                },
-                {
-                    urlImg: "../../src/assets/img/it.png",
-                    language: "it",
-                },
-                {
-                    urlImg: "../../src/assets/img/no.png",
-                    language: "no",
-                },
-                {
-                    urlImg: "../../src/assets/img/world.jpg",
-                    language: "all",
-                },
-            ],
+
         }
     },
     computed: {
         // creata la funzione per far stampare delle bandiere al posto delle lingue 
         selectFlagLanguage() {
-            const selectFlag = this.flagLanguage.find((language) => language.language === this.info.original_language);
+            const selectFlag = this.flag.find((language) => language.language === this.info.original_language);
             if (selectFlag) {
                 return selectFlag.urlImg;
             }
-            return this.flagLanguage[this.flagLanguage.length - 1].urlImg;
+            return this.flag[this.flag.length - 1].urlImg;
 
         },
         // creo la funzione per convertire il numero decimale da 1 a 10 del voto in un numero intero da 1 a 5

@@ -22,7 +22,8 @@ export default {
     <h2 class="results">Risultati ricerca:</h2>
     <div class="container">
         <!-- creato un ciclo for sul componente per far stampare in FilmList tutti gli oggetti contenuti nell'array filmList -->
-        <CardGenerator v-for="obj in store.filmList" :key="obj.id" :info="obj" :urlImg="store.apiImgUrl" />
+        <CardGenerator v-for="obj in store.filmList" :key="obj.id" :info="obj" :urlImg="store.apiImgUrl"
+            :flag="store.flagLanguage" />
     </div>
 </template>
 
